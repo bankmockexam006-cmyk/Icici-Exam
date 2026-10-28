@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Independent ICICI Bank model assessment practice website with 200 questions.">
+  <title>ICICI Bank Model Assessment | Practice Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Practice portal home"><span class="brand-mark">i</span><span><b>ICICI BANK</b><small>MODEL ASSESSMENT PRACTICE</small></span></a>
+    <span class="independent-tag">Independent practice resource</span>
+  </header>
+  <main class="container">
+    <div class="notice"><strong>Practice resource only.</strong> This is an independent learning website and is not affiliated with, endorsed by, or an official portal of ICICI Bank. These are model questions, not actual or official exam questions.</div>
+
+    <section id="welcome" class="panel welcome-panel">
+      <div class="eyebrow">ONLINE ASSESSMENT · ENGLISH</div>
+      <h1>Banking Assessment <span>Practice Test</span></h1>
+      <p class="lead">Build confidence with 200 model questions across seven learning areas. Your results and explanations appear after you submit.</p>
+      <div class="summary-grid">
+        <div class="summary-item"><strong>200</strong><span>Questions</span></div>
+        <div class="summary-item"><strong>30:00</strong><span>Time limit</span></div>
+        <div class="summary-item"><strong>7</strong><span>Sections</span></div>
+      </div>
+      <div class="section-list">
+        <span>Quantitative Aptitude</span><span>Logical Reasoning</span><span>Banking Awareness</span><span>English Language</span><span>Computer Knowledge</span><span>Customer Service &amp; Sales</span><span>HR Interview</span>
+      </div>
+      <form id="loginForm" class="login-form">
+        <h2>Candidate details</h2>
+        <label for="candidateName">Full name</label>
+        <input id="candidateName" name="name" autocomplete="name" placeholder="Enter your full name" required maxlength="100">
+        <label for="candidateEmail">Email address</label>
+        <input id="candidateEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="160">
+        <p id="loginError" class="error-text" role="alert"></p>
+        <button class="primary-btn full-btn" type="submit">Start practice test <span>→</span></button>
+        <p class="privacy-note">Details are used only in this browser session. This static demo does not send them to a server.</p>
+      </form>
+    </section>
+
+    <section id="exam" class="hidden">
+      <div class="exam-header">
+        <div><div class="eyebrow">CANDIDATE</div><strong id="candidateLabel"></strong></div>
+        <div class="timer-box"><span>TIME LEFT</span><strong id="timer">30:00</strong></div>
+      </div>
+      <div class="progress-card">
+        <div class="progress-label"><span>Overall progress</span><span><b id="answeredCount">0</b> answered of 200</span></div>
+        <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+        <div class="progress-foot"><span><i class="dot green"></i> Answered: <b id="answeredCountMirror">0</b></span><span>Unanswered: <b id="unansweredCount">200</b></span></div>
+      </div>
+      <div class="exam-layout">
+        <section class="panel question-panel">
+          <div class="question-meta"><span id="sectionName" class="pill">Section</span><span id="questionNumber">Question 1 of 200</span></div>
+          <div id="questionText" class="question-text"></div>
+          <div id="options" class="options"></div>
+          <div class="question-actions"><button id="prevBtn" class="secondary-btn" type="button">← Previous</button><button id="nextBtn" class="primary-btn" type="button">Next question →</button></div>
+          <p class="hint">Choose one answer. You can revisit questions before submitting.</p>
+        </section>
+        <aside class="panel navigator-panel">
+          <h2>Question navigator</h2>
+          <label for="sectionFilter">Jump by section</label>
+          <select id="sectionFilter"><option value="all">All questions</option></select>
+          <div class="navigator-legend"><span><i class="legend-box answered-box"></i> Answered</span><span><i class="legend-box"></i> Unanswered</span></div>
+          <div id="navigator" class="navigator"></div>
+          <button id="submitBtn" class="submit-btn full-btn" type="button">Review &amp; submit</button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="results" class="hidden">
+      <div class="panel result-hero">
+        <div class="eyebrow">ASSESSMENT COMPLETE</div><h1>Your practice results</h1>
+        <p id="resultMessage" class="lead"></p>
+        <div class="score-row"><div><span class="score-label">Total score</span><strong id="scoreBig" class="score-big">0 / 200</strong></div><div class="percent-badge" id="scorePercent">0%</div></div>
+        <div class="result-stats">
+          <div><strong id="correctResult">0</strong><span>Correct</span></div>
+          <div><strong id="wrongResult">0</strong><span>Incorrect</span></div>
+          <div><strong id="unansweredResult">0</strong><span>Unanswered</span></div>
+        </div>
+        <p><b>Candidate:</b> <span id="resultName"></span><br><b>Email:</b> <span id="resultEmail"></span></p>
+        <div class="result-actions"><button id="downloadBtn" class="secondary-btn" type="button">Download result summary</button><button id="restartBtn" class="primary-btn" type="button">Try again</button></div>
+      </div>
+      <div class="review-heading"><div><div class="eyebrow">LEARN FROM YOUR ANSWERS</div><h2>Answer review &amp; explanations</h2></div><span class="review-count">200 questions</span></div>
+      <div id="reviewList" class="review-list"></div>
+    </section>
+    <footer><p>Independent educational practice resource · Not an official ICICI Bank website · No affiliation implied.</p></footer>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    const select = document.getElementById("sectionFilter");
+    [...new Set(QUESTIONS.map(q => q.section))].forEach(section => {
+      const option = document.createElement("option"); option.value = section; option.textContent = section; select.appendChild(option);
+    });
+  </script>
+</body>
+</html>
